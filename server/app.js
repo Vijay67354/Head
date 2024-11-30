@@ -61,7 +61,15 @@ app.post('/api/persons', async (req, res) => {
   }
 });
 
+if (process.env.NODE_ENV === 'production') {
+  // Serve the static files from the React app
+  app.use(express.static(path.join(__dirname, 'my-project/build')));
 
+  // Catch-all route to serve the React app for any unknown routes
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'my-project', 'build', 'index.html'));
+  });
+}
 
 // Start server
 const PORT = process.env.PORT || 3014;
