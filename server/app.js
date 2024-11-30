@@ -10,21 +10,16 @@ const cors = require('cors');
 const path = require('path');
 app.use(cors());
 app.use(cors({
-  origin: 'http://localhost:3014', // Your frontend origin
+  origin: 'http://localhost:3016', // Your frontend origin
   methods: ['GET', 'POST'],
   credentials: true,
 }));
-// MongoDB connection
-console.log(process.env.MONGO_URI); // Check if the value is loaded correctly
+const MONGO_URI = process.env.MONGO_URI;  // Get MongoDB URI from .env
 
-if (!process.env.MONGO_URI) {
-//   console.error('MongoDB URI is not defined!');
-  process.exit(1); // Exit the process if the URI is missing
-}
-
-mongoose.connect(process.env.MONGO_URI, {
+// Connect to MongoDB using Mongoose
+mongoose.connect(MONGO_URI, {
   useNewUrlParser: true,
-  useUnifiedTopology: true,
+  useUnifiedTopology: true
 })
 .then(() => console.log('Connected to MongoDB successfully!'))
 .catch((err) => console.error('Error connecting to MongoDB:', err));
@@ -61,18 +56,11 @@ app.post('/api/persons', async (req, res) => {
   }
 });
 
-if (process.env.NODE_ENV === 'production') {
-  // Serve the static files from the React app
-  app.use(express.static(path.join(__dirname, 'my-project/build')));
 
-  // Catch-all route to serve the React app for any unknown routes
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'my-project', 'build', 'index.html'));
-  });
-}
+
 
 // Start server
-const PORT = process.env.PORT || 3014;
+const PORT = process.env.PORT || 3016;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
