@@ -64,3 +64,15 @@ const PORT = process.env.PORT || 3016;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
+
+
+// if (process.env.NODE_ENV === 'production') {
+//   // Serve static files from the React app's build directory
+//   app.use(express.static(path.join(__dirname, '../my-project/build')));
+
+//   // Catch-all route to serve the React app for any unknown routes
+//   app.get('*', (req, res) => {
+//     res.sendFile(path.resolve(__dirname, '../my-project', 'build', 'index.html'));
+//   });
+// }
