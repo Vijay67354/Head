@@ -3,9 +3,11 @@ const express = require('express');
 const mongoose = require('mongoose');
 require('dotenv').config();
 // Initialize app
+
 const app = express();
 app.use(express.json()); // Parse incoming JSON requests
 const cors = require('cors');
+
 app.use(cors());
 app.use(cors({
   origin: 'http://localhost:3014', // Your frontend origin
@@ -58,6 +60,8 @@ app.post('/api/persons', async (req, res) => {
     res.status(400).json({ message: err.message });
   }
 });
+
+
 
 // Start server
 const PORT = process.env.PORT || 3014;
