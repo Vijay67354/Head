@@ -7,7 +7,7 @@ require('dotenv').config();
 const app = express();
 app.use(express.json()); // Parse incoming JSON requests
 const cors = require('cors');
-
+const path = require('path');
 app.use(cors());
 app.use(cors({
   origin: 'http://localhost:3014', // Your frontend origin

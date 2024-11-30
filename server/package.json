@@ -5,9 +5,12 @@
     "express": "^4.21.1",
     "mongodb": "^6.11.0",
     "mongoose": "^8.8.3",
-    "node": "^20.18.1"
+    "node": "^20.18.1",
+     "path": "^0.12.7",
+     "main": "server/app.js"
   },
   "scripts": {
-    "start":"node app.js"
+    "start": "node server/app.js",
+    "dev": "nodemon server/app.js"
   }
 }
