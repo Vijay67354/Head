@@ -11,3 +11,5 @@
 //     res.sendFile(path.resolve(__dirname, '../my-project', 'build', 'index.html'));
 //   });
 // }
+touch .gitignore
+node_modules/
