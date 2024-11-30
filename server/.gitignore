@@ -1,5 +1,7 @@
 .env
 .git
+.node_modules
+./node_modules
 // if (process.env.NODE_ENV === 'production') {
 //   // Serve static files from the React app's build directory
 //   app.use(express.static(path.join(__dirname, '../my-project/build')));
